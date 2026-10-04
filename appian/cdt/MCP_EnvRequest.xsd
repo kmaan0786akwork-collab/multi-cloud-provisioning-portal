@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:com:appian:types:MCP" targetNamespace="urn:com:appian:types:MCP">
+  <xsd:complexType name="MCP_EnvRequest">
+    <xsd:annotation>
+      <xsd:documentation>Environment request submitted through the self-service portal</xsd:documentation>
+      <xsd:appinfo source="appian.jpa">@Table(name="MCP_ENV_REQUEST")</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="requestId" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Id @GeneratedValue @Column(name="REQUEST_ID", nullable=false)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="requestRef" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="REQUEST_REF", length=20)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="teamId" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="TEAM_ID", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="requestor" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="REQUESTOR", length=255)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="appName" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="APP_NAME", length=31)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="providerCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="PROVIDER_CODE", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="regionCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="REGION_CODE", length=30)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="envType" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ENV_TYPE", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="templateCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="TEMPLATE_CODE", length=20)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="vcpuPerNode" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="VCPU_PER_NODE")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ramGbPerNode" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="RAM_GB_PER_NODE")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="storageGbPerNode" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="STORAGE_GB_PER_NODE")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="nodeCount" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="NODE_COUNT")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ttlDays" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="TTL_DAYS")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="estMonthlyCost" nillable="true" type="xsd:decimal">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="EST_MONTHLY_COST")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="approvalRoute" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="APPROVAL_ROUTE", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="statusCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="STATUS_CODE", length=30)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="justification" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="JUSTIFICATION", length=2000)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="processId" nillable="true" type="xsd:long">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="PROCESS_ID")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="jobId" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="JOB_ID", length=30)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="jobAttempt" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="JOB_ATTEMPT")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="jobError" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="JOB_ERROR", length=1000)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="createdOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="CREATED_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="updatedOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="UPDATED_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

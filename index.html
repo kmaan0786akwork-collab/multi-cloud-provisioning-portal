@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NimbusOps — Multi-Cloud Provisioning & DevOps Governance</title>
+  <meta name="description" content="Appian-style self-service cloud provisioning portal with quota evaluation, policy-driven approval routing, async provisioning via Web APIs and full audit tracing.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f54eb'/%3E%3Cpath d='M9 21a5 5 0 0 1 1-9.9A6.5 6.5 0 0 1 22.6 12 4.5 4.5 0 0 1 23 21z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#/dashboard">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><path d="M9 21a5 5 0 0 1 1-9.9A6.5 6.5 0 0 1 22.6 12 4.5 4.5 0 0 1 23 21z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-text">NimbusOps<small>Cloud Provisioning &amp; Governance</small></span>
+      </a>
+      <nav class="tabs" id="tabs" aria-label="Primary"></nav>
+      <div class="persona" id="persona"></div>
+    </div>
+  </header>
+
+  <main id="view" class="view" tabindex="-1"></main>
+
+  <footer class="footer">
+    <span>NimbusOps · portfolio replica of an Appian application (Appian Suite · MariaDB · Web APIs). Data is simulated and stored in your browser.</span>
+    <a href="https://github.com/kmaan0786akwork-collab/multi-cloud-provisioning-portal" target="_blank" rel="noopener">Source &amp; Appian design artifacts</a>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/rules.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>

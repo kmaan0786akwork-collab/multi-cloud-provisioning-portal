@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: MCP Orchestrator API
+  version: 1.4.0
+  description: Deployment orchestration service called by the NimbusOps Appian application. Wraps Terraform pipelines for AWS, Azure and GCP.
+servers:
+  - url: https://orchestrator.nimbusops.internal
+security:
+  - oauth2: []
+paths:
+  /v1/deployments:
+    post:
+      summary: Create a deployment job
+      operationId: createDeployment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DeploymentRequest' }
+      responses:
+        '202':
+          description: Accepted — job queued
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Job' }
+        '400': { description: Invalid payload }
+        '409': { description: Cluster name already exists }
+  /v1/deployments/{jobId}:
+    get:
+      summary: Get deployment job status
+      operationId: getDeploymentStatus
+      parameters:
+        - { name: jobId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Current job state
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Job' }
+  /v1/deployments/{assetId}:
+    delete:
+      summary: Destroy a provisioned environment
+      operationId: deleteDeployment
+      parameters:
+        - { name: assetId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: Resources destroyed }
+  /v1/notifications:
+    post:
+      summary: Relay a notification to Teams / Slack
+      operationId: postNotification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channel: { type: string }
+                text: { type: string }
+      responses:
+        '200': { description: Delivered }
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.nimbusops.internal/oauth2/token
+          scopes:
+            deployments:write: Create and delete deployments
+            deployments:read: Read deployment status
+  schemas:
+    DeploymentRequest:
+      type: object
+      required: [requestId, provider, region, template, environment, nodeCount, nodeSize]
+      properties:
+        requestId: { type: string, example: REQ-1008 }
+        provider: { type: string, enum: [AWS, AZURE, GCP] }
+        region: { type: string, example: centralindia }
+        template: { type: string, enum: [K8S, VM_POOL, DATA] }
+        environment: { type: string, enum: [DEV, QA, STAGING, PROD] }
+        nodeCount: { type: integer, minimum: 1, maximum: 50 }
+        nodeSize:
+          type: object
+          properties:
+            vcpu: { type: integer }
+            memoryGb: { type: integer }
+            diskGb: { type: integer }
+        tags:
+          type: object
+          additionalProperties: { type: string }
+    Job:
+      type: object
+      properties:
+        jobId: { type: string, example: JOB-88200 }
+        state: { type: string, enum: [QUEUED, VALIDATING, PLANNING, APPLYING, HEALTH_CHECK, SUCCEEDED, FAILED] }
+        error: { type: string, nullable: true }

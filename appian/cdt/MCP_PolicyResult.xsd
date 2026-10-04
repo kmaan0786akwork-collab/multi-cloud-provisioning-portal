@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:com:appian:types:MCP" targetNamespace="urn:com:appian:types:MCP">
+  <xsd:complexType name="MCP_PolicyResult">
+    <xsd:annotation>
+      <xsd:documentation>Result of a single infrastructure policy check</xsd:documentation>
+      <xsd:appinfo source="appian.jpa">@Table(name="MCP_POLICY_RESULT")</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="resultId" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Id @GeneratedValue @Column(name="RESULT_ID", nullable=false)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="requestId" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="REQUEST_ID")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="policyCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="POLICY_CODE", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="policyName" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="POLICY_NAME", length=60)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="severity" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="SEVERITY", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="message" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="MESSAGE", length=500)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="engineVersion" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ENGINE_VERSION", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="evaluatedOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="EVALUATED_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

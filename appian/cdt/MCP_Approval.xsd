@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:com:appian:types:MCP" targetNamespace="urn:com:appian:types:MCP">
+  <xsd:complexType name="MCP_Approval">
+    <xsd:annotation>
+      <xsd:documentation>One approval step (AUTO / L1 / L2) in a request's chain</xsd:documentation>
+      <xsd:appinfo source="appian.jpa">@Table(name="MCP_APPROVAL")</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="approvalId" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Id @GeneratedValue @Column(name="APPROVAL_ID", nullable=false)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="requestId" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="REQUEST_ID")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="levelCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="LEVEL_CODE", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assignee" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ASSIGNEE", length=255)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="decision" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="DECISION", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="commentText" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="COMMENT_TEXT", length=2000)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="taskId" nillable="true" type="xsd:long">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="TASK_ID")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assignedOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ASSIGNED_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="decidedOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="DECIDED_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:com:appian:types:MCP" targetNamespace="urn:com:appian:types:MCP">
+  <xsd:complexType name="MCP_CloudAsset">
+    <xsd:annotation>
+      <xsd:documentation>Provisioned cloud asset and its live state</xsd:documentation>
+      <xsd:appinfo source="appian.jpa">@Table(name="MCP_CLOUD_ASSET")</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="assetId" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Id @GeneratedValue @Column(name="ASSET_ID", nullable=false)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assetRef" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ASSET_REF", length=20)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="requestId" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="REQUEST_ID")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="teamId" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="TEAM_ID", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="clusterName" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="CLUSTER_NAME", length=80)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="providerCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="PROVIDER_CODE", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="regionCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="REGION_CODE", length=30)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="envType" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ENV_TYPE", length=10)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="nodeCount" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="NODE_COUNT")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endpointUrl" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ENDPOINT_URL", length=255)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assetStatus" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ASSET_STATUS", length=12)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="cpuUtilPct" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="CPU_UTIL_PCT")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="memUtilPct" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="MEM_UTIL_PCT")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="podCount" nillable="true" type="xsd:int">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="POD_COUNT")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="createdOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="CREATED_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="expiresOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="EXPIRES_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="terminatedOn" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="TERMINATED_ON")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

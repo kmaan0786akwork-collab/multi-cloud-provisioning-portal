@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:com:appian:types:MCP" targetNamespace="urn:com:appian:types:MCP">
+  <xsd:complexType name="MCP_AuditLog">
+    <xsd:annotation>
+      <xsd:documentation>Append-only audit event</xsd:documentation>
+      <xsd:appinfo source="appian.jpa">@Table(name="MCP_AUDIT_LOG")</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="auditId" nillable="true" type="xsd:long">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Id @GeneratedValue @Column(name="AUDIT_ID", nullable=false)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="eventTs" nillable="true" type="xsd:dateTime">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="EVENT_TS")</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="actor" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ACTOR", length=255)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="actionCode" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ACTION_CODE", length=40)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="entityType" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ENTITY_TYPE", length=30)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="entityRef" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="ENTITY_REF", length=20)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="correlationId" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="CORRELATION_ID", length=40)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+      <xsd:element name="details" nillable="true" type="xsd:string">
+        <xsd:annotation><xsd:appinfo source="appian.jpa">@Column(name="DETAILS", length=2000)</xsd:appinfo></xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
